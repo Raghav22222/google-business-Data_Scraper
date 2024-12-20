@@ -15,6 +15,76 @@ You can install them using `pip`:
 pip install requests pandas
 ```
 
+## How to Run and Test the Scraper
+
+### Prerequisites
+
+Before running the scraper, ensure you have the following:
+1. **Python 3.x**: The scraper is written in Python, so make sure you have Python 3 installed on your system.
+2. **Google Places API Key**: You'll need a Google Places API key to authenticate your requests. You can get it from the [Google Cloud Console](https://console.cloud.google.com/).
+
+### Setup
+
+1. **Clone the repository**: To get started, clone this repository to your local machine:
+
+    ```bash
+    git clone https://github.com/username/google-business-scraper.git
+    ```
+
+2. **Navigate to the project folder**:
+
+    ```bash
+    cd google-business-scraper
+    ```
+
+3. **API Key Configuration**:
+    - Open the script `google_business_scraper.ipynb` (or `google_business_scraper.py` if running as a script).
+    - Replace the `api_key` variable with your own API key.
+
+### Running the Scraper
+
+#### Option 1: Jupyter Notebook
+
+1. Open the `google_business_scraper.ipynb` in your preferred Jupyter environment (e.g., Jupyter Notebook or JupyterLab).
+2. Run all the cells to execute the code and start the scraping process.
+
+#### Option 2: Python Script
+
+1. Open a terminal in the project folder.
+2. Run the script using Python:
+
+    ```bash
+    python google_business_scraper.py
+    ```
+
+### Testing the Scraper
+
+1. **Test with different queries**: You can modify the query in the script to search for different types of businesses or locations. For example, change `"restaurants in Mumbai"` to `"hospitals in Delhi"` or `"coffee shops in New York"`.
+   
+2. **Rate Limiting**: The scraper includes a delay (`time.sleep(2)`) to ensure compliance with Google API's rate limits. If you need to scrape more data, consider implementing more sophisticated rate-limiting or pagination techniques.
+
+### Data Output
+
+- The scraper will generate a CSV file named `google_business_results.csv` containing the following fields:
+    - **Name**: The name of the business.
+    - **Address**: The business address.
+    - **Rating**: The business's rating.
+    - **Phone Number**: The business's contact number.
+    - **Website**: The business's website URL.
+    - **Industry**: The type or industry the business belongs to.
+
+- The CSV file will be saved to your specified path (or the default location if not modified).
+
+### Sample Dataset
+
+The generated dataset will look like this (with anonymized or generic information):
+
+```csv
+Name,Address,Rating,Phone Number,Website,Industry
+Restaurant A,"123 Street, Mumbai",4.5,"N/A","www.restaurantA.com","Food & Beverage"
+Restaurant B,"456 Street, Mumbai",4.2,"N/A","www.restaurantB.com","Food & Beverage"
+```
+
 ## Code Explanation
 
 ### 1. Import Libraries
@@ -78,12 +148,6 @@ The scraper includes basic data cleaning, which:
 - **Fills missing values**: Any missing values are filled with `"N/A"` to ensure consistency and avoid errors during data analysis.
 
 Feel free to modify the data processing steps based on your specific needs.
-
-### Testing the Scraper
-
-- **Test with different queries**: You can modify the query in the script to search for different types of businesses or locations, such as `"hospitals in Delhi"` or `"coffee shops in New York"`.
-  
-- **Rate Limiting**: The scraper uses a delay (`time.sleep(2)`) to ensure compliance with Google API's rate limits. If you need to scrape more data, consider implementing more sophisticated rate-limiting or pagination techniques.
 
 ### Repository Files
 
